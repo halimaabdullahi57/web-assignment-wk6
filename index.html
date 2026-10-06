@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpendWise - Budget Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <h1>SpendWise</h1>
+      <p class="tagline">Smart budgeting made simple.</p>
+      <nav>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#add-expense">Add Expense</a>
+        <a href="#expenses">Expenses</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">PERSONAL FINANCE</p>
+          <h2 id="dashboard">Budget Dashboard</h2>
+        </div>
+        <div class="budget-box">
+          <label for="budgetInput">Monthly Budget</label>
+          <input type="number" id="budgetInput" min="0" step="0.01" value="50000">
+        </div>
+      </header>
+
+      <section class="cards">
+        <article class="card">
+          <span>Total Budget</span>
+          <strong id="budgetDisplay">KSh 50,000.00</strong>
+        </article>
+        <article class="card">
+          <span>Total Spent</span>
+          <strong id="totalSpent">KSh 0.00</strong>
+        </article>
+        <article class="card">
+          <span>Remaining</span>
+          <strong id="remaining">KSh 50,000.00</strong>
+        </article>
+        <article class="card">
+          <span>Expense Records</span>
+          <strong id="expenseCount">0</strong>
+        </article>
+      </section>
+
+      <section class="feedback" id="budgetFeedback">
+        Set your budget and add expenses to see your spending status.
+      </section>
+
+      <section class="panel" id="add-expense">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">NEW RECORD</p>
+            <h3>Add an Expense</h3>
+          </div>
+        </div>
+
+        <form id="expenseForm">
+          <div class="form-group">
+            <label for="expenseName">Expense Name</label>
+            <input type="text" id="expenseName" placeholder="e.g. Groceries" required>
+          </div>
+
+          <div class="form-group">
+            <label for="expenseAmount">Amount (KSh)</label>
+            <input type="number" id="expenseAmount" min="0.01" step="0.01" placeholder="e.g. 2500" required>
+          </div>
+
+          <div class="form-group">
+            <label for="expenseCategory">Category</label>
+            <select id="expenseCategory" required>
+              <option value="">Select category</option>
+              <option>Food</option>
+              <option>Transport</option>
+              <option>Rent</option>
+              <option>Entertainment</option>
+              <option>Utilities</option>
+              <option>Savings</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <button type="submit">Add Expense</button>
+        </form>
+      </section>
+
+      <section class="panel" id="expenses">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">TRANSACTION HISTORY</p>
+            <h3>Recent Expenses</h3>
+          </div>
+          <button class="secondary-btn" id="clearExpenses" type="button">Clear All</button>
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Category</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="expenseTableBody"></tbody>
+          </table>
+        </div>
+
+        <p class="empty-state" id="emptyState">No expenses yet. Add your first expense above.</p>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
